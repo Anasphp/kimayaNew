@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/contact', 'ContactController@index');
+
+Route::get('/contact', ['as'=>'contact','uses'=>'ContactController@index']);
+
 
 Route::post('/contact-details','ContactController@contactDetail');
 
@@ -53,14 +55,14 @@ Route::get('/corporate', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::get('/login', ['as'=>'login','uses'=>'LoginController@index']);
 
+Route::post('/loginToAdmin', 'LoginController@loginToAdmin');
 
-Route::get('/admin', function () {
-    return view('admin');
-});
+Route::get('/admin', ['as'=>'admin','uses'=>'AdminController@index']);
+
+Route::get('/logout', ['as'=>'logout','uses'=>'AdminController@logout']);
+
 
 
 

@@ -20,8 +20,6 @@ class ContactController extends Controller
         $contact->contacts_subject = $input['subject'];
         $contact->contacts_message = $input['message'];
         $contact->save();
-        return view('contact-us');
+        return redirect()->route('contact');
     }
-
-
 }

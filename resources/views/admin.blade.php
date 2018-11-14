@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -43,16 +42,7 @@
                   </div>
                 </div>
               </a>
-              <a class="dropdown-item mt-2">
-                Manage Accounts
-              </a>
-              <a class="dropdown-item">
-                Change Password
-              </a>
-              <a class="dropdown-item">
-                Check Inbox
-              </a>
-              <a class="dropdown-item">
+              <a class="dropdown-item" href="{{ url('logout') }}">
                 Sign Out
               </a>
             </div>
@@ -85,7 +75,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ url('admin') }}">
               <i class="menu-icon mdi mdi-television"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -108,163 +98,73 @@
                             #
                           </th>
                           <th>
-                            First name
+                            Name
                           </th>
                           <th>
-                            Progress
+                            Mobile Number
                           </th>
                           <th>
-                            Amount
+                            Subject
                           </th>
                           <th>
-                            Sales
+                            Message
                           </th>
                           <th>
-                            Deadline
+                            Date and Time
                           </th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($contact as $contacts)
                         <tr>
                           <td class="font-weight-medium">
-                            1
+                            {{$contacts->contacts_id}}
                           </td>
                           <td>
-                            Herman Beck
+                            {{$contacts->contacts_name}}
                           </td>
                           <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
+                            {{$contacts->contacts_number}}
                           </td>
                           <td>
-                            $ 77.99
+                            {{$contacts->contacts_subject}}
                           </td>
-                          <td class="text-danger"> 53.64%
-                            <i class="mdi mdi-arrow-down"></i>
+                          <td style="word-wrap: break-word;">
+                            {{$contacts->contacts_message}}
                           </td>
                           <td>
-                            May 15, 2015
+                            {{$contacts->created_at}}
                           </td>
                         </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            2
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td class="text-success"> 24.56%
-                            <i class="mdi mdi-arrow-up"></i>
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            3
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td class="text-danger"> 28.76%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            Apr 12, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            4
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td class="text-danger"> 53.45%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            5
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 160.25
-                          </td>
-                          <td class="text-success"> 18.32%
-                            <i class="mdi mdi-arrow-up"></i>
-                          </td>
-                          <td>
-                            May 03, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="font-weight-medium">
-                            6
-                          </td>
-                          <td>
-                            Henry Tom
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-                                aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 150.00
-                          </td>
-                          <td class="text-danger"> 24.67%
-                            <i class="mdi mdi-arrow-down"></i>
-                          </td>
-                          <td>
-                            June 16, 2015
-                          </td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination pg-blue">
+                          @for ($i = 1; $i <= $contact->lastPage(); $i++)
+                              <li class="page-item">
+                                  <a href="{{ $contact->url($i) }}">{{ $i }}</a>
+                              </li>
+                          @endfor
+                      </ul>
+                    </nav>
+                 <!-- @if ($contact->lastPage() > 1)
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination pg-blue">
+                          <li class="{{ ($contact->currentPage() == 1) ? ' disabled' : '' }} page-item">
+                              <a href="{{ $contact->url(1) }}">Previous</a>
+                          </li>
+                          @for ($i = 1; $i <= $contact->lastPage(); $i++)
+                              <li class="page-item">
+                                  <a href="{{ $contact->url($i) }}">{{ $i }}</a>
+                              </li>
+                          @endfor
+                          <li class="{{ ($contact->currentPage() == $contact->lastPage()) ? ' disabled' : '' }} page-item">
+                              <a href="{{ $contact->url($contact->currentPage()+1) }}" >Next</a>
+                          </li>
+                      </ul>
+                    </nav>
+                    @endif -->
                   </div>
                 </div>
               </div>
